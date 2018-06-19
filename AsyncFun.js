@@ -4,6 +4,7 @@ const scheduler = require('./dgt-scheduler')
 var AsyncFun = (function(){
 	var task = [];
 	var isRun = false;
+	var data = {}; //从外部传来的变量。 如果出现未定义变量时，请在这里传参。 AsyncFun.data.xxxx
 
 	var process = function (){
 		if(task.length ===0) return;
@@ -36,9 +37,14 @@ var AsyncFun = (function(){
 			process()
 		}
 	}
+	var clear = function(){
+		task = [];
+	}
 
     return{
-        run: run
+        run: run,
+        clear: clear,
+        data: data
     }
 })();
 

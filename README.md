@@ -40,7 +40,8 @@ asyncFun.run(fun1);
 
 ```
 
-```result
+result:
+```text
 --1-----
 ---2----
 ---3----

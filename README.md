@@ -7,6 +7,7 @@
 
 参考下面例子：
 ```javascript
+const asyncFun = require('./AsyncFun')
 
 function fun1(){
   new Promise(function(resolve, reject) {
@@ -16,8 +17,8 @@ function fun1(){
     }, 1000) 
   })
 }
-AsyncFun.run(fun1);
-AsyncFun.run(function(){
+asyncFun.run(fun1);
+asyncFun.run(function(){
   new Promise(function(resolve, reject) {
     setTimeout(function() {
       console.log('---2----')
@@ -26,7 +27,7 @@ AsyncFun.run(function(){
     //自动添加resolve的位置。
   })
 });
-AsyncFun.run(`function(){//可以用字符串的方式添加
+asyncFun.run(`function(){//可以用字符串的方式添加
   new Promise(function(resolve, reject) {
     setTimeout(function() {
       console.log('---3----')
@@ -34,9 +35,18 @@ AsyncFun.run(`function(){//可以用字符串的方式添加
     }, 1000) 
   })
 }`);
-AsyncFun.run(fun1);
+asyncFun.run(fun1);
+
 
 ```
+
+```result
+--1-----
+---2----
+---3----
+--1-----
+```
+
 
 ## License
 MIT.
